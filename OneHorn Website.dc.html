@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<title>OneHorn — Design Studio for Brands, Websites &amp; Digital Products</title>
+<meta name="description" content="OneHorn is an IITian-founded design studio helping startups, local businesses and growing organisations build stronger brands, websites and digital experiences.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="OneHorn — Design Studio for Brands, Websites &amp; Digital Products">
+<meta property="og:description" content="OneHorn is an IITian-founded design studio helping startups, local businesses and growing organisations build stronger brands, websites and digital experiences.">
+<meta property="og:image" content="assets/onehorn-logo.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="theme-color" content="#FFFFFF">
+<link rel="icon" type="image/png" href="assets/onehorn-logo.png">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"ProfessionalService","name":"OneHorn Design Studio","description":"IITian-founded design studio for brands, websites and digital products.","email":"1hornstudio@gmail.com","founder":[{"@type":"Person","name":"Sumit Baranwal"},{"@type":"Person","name":"Pratik Dusane"}]}</script>
+<link rel="stylesheet" href="_ds/shadcn-ui-design-system-78dd7306-68f4-4f3d-a1b1-8768c357041b/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/shadcn-ui-design-system-78dd7306-68f4-4f3d-a1b1-8768c357041b/tokens/colors.css">
+<link rel="stylesheet" href="_ds/shadcn-ui-design-system-78dd7306-68f4-4f3d-a1b1-8768c357041b/tokens/typography.css">
+<link rel="stylesheet" href="_ds/shadcn-ui-design-system-78dd7306-68f4-4f3d-a1b1-8768c357041b/tokens/radius.css">
+<link rel="stylesheet" href="_ds/shadcn-ui-design-system-78dd7306-68f4-4f3d-a1b1-8768c357041b/tokens/spacing.css">
+<link rel="stylesheet" href="_ds/shadcn-ui-design-system-78dd7306-68f4-4f3d-a1b1-8768c357041b/tokens/elevation.css">
+<link rel="stylesheet" href="_ds/shadcn-ui-design-system-78dd7306-68f4-4f3d-a1b1-8768c357041b/components.css">
+<link rel="stylesheet" href="_ds/shadcn-ui-design-system-78dd7306-68f4-4f3d-a1b1-8768c357041b/styles.css">
+<script src="_ds/shadcn-ui-design-system-78dd7306-68f4-4f3d-a1b1-8768c357041b/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}*,*::before,*::after{transition-duration:0ms!important;animation-duration:0ms!important}}
+body{margin:0;background:#FFFFFF;color:#0A0A0A;font-family:'Geist',system-ui,sans-serif;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+*{box-sizing:border-box}
+::selection{background:#0A0A0A;color:#FFFFFF}
+a{color:#0A0A0A;text-decoration:none}
+a:hover{color:#0A0A0A;text-decoration:underline;text-underline-offset:4px}
+a:focus-visible,button:focus-visible,[tabindex]:focus-visible{outline:2px solid #0A0A0A;outline-offset:3px}
+</style>
+</helmet>
+
+<a href="#main" style="position:fixed;left:16px;top:-60px;z-index:200;background:#0A0A0A;color:#FFFFFF;padding:12px 16px;font-size:14px;border-radius:6px;transition:top 150ms" style-focus="top:12px;color:#FFFFFF">Skip to content</a>
+
+<header style="position:fixed;top:0;left:0;right:0;z-index:100;background:{{ navBg }};border-bottom:1px solid {{ navBorder }};backdrop-filter:{{ navBlur }};-webkit-backdrop-filter:{{ navBlur }};transition:background 250ms, border-color 250ms">
+  <nav aria-label="Primary" style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);height:64px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+    <a href="#top" aria-label="OneHorn, home" style="font-weight:700;font-size:16px;letter-spacing:0.14em;color:#0A0A0A;text-decoration:none">ONEHORN</a>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <div style="display:flex;align-items:center;gap:36px">
+        <div style="display:flex;gap:28px;font-size:14px;font-weight:500">
+          <a href="#work" style="color:#0A0A0A">Work</a>
+          <a href="#services" style="color:#0A0A0A">Services</a>
+          <a href="#about" style="color:#0A0A0A">About</a>
+          <a href="#contact" style="color:#0A0A0A">Contact</a>
+        </div>
+        <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Button" onClick="{{ talk }}" data-cursor="OPEN" style="height:40px;padding:0 16px;font-size:14px" hint-size="170px,40px">Talk to an expert →</x-import>
+      </div>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ openMenu }}" aria-expanded="{{ menuExpanded }}" aria-controls="mobile-menu" style="height:44px;padding:0 4px;background:none;border:0;font:500 15px 'Geist',sans-serif;color:#0A0A0A;cursor:pointer">Menu</button>
+    </sc-if>
+  </nav>
+</header>
+
+<sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+  <div id="mobile-menu" role="dialog" aria-modal="true" aria-label="Menu" style="position:fixed;inset:0;z-index:150;background:#FFFFFF;display:flex;flex-direction:column;padding:0 20px 32px">
+    <div style="height:64px;display:flex;align-items:center;justify-content:space-between">
+      <span style="font-weight:700;font-size:16px;letter-spacing:0.14em">ONEHORN</span>
+      <button type="button" onClick="{{ closeMenu }}" style="height:44px;padding:0 4px;background:none;border:0;font:500 15px 'Geist',sans-serif;color:#0A0A0A;cursor:pointer">Close</button>
+    </div>
+    <div style="flex:1;display:flex;flex-direction:column;justify-content:center;border-top:1px solid #E5E5E5">
+      <a href="#work" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid #E5E5E5;font-size:44px;font-weight:600;letter-spacing:-0.035em;color:#0A0A0A"><span>Work</span><span style="font:500 12px 'Geist Mono',monospace;color:#737373">01</span></a>
+      <a href="#services" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid #E5E5E5;font-size:44px;font-weight:600;letter-spacing:-0.035em;color:#0A0A0A"><span>Services</span><span style="font:500 12px 'Geist Mono',monospace;color:#737373">02</span></a>
+      <a href="#about" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid #E5E5E5;font-size:44px;font-weight:600;letter-spacing:-0.035em;color:#0A0A0A"><span>About</span><span style="font:500 12px 'Geist Mono',monospace;color:#737373">03</span></a>
+      <a href="#contact" onClick="{{ closeMenu }}" style="display:flex;justify-content:space-between;align-items:baseline;padding:18px 0;border-bottom:1px solid #E5E5E5;font-size:44px;font-weight:600;letter-spacing:-0.035em;color:#0A0A0A"><span>Contact</span><span style="font:500 12px 'Geist Mono',monospace;color:#737373">04</span></a>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Button" onClick="{{ talk }}" style="height:52px;width:100%;font-size:16px" hint-size="100%,52px">Talk to a design expert →</x-import>
+      <a href="mailto:1hornstudio@gmail.com" style="font-size:15px;color:#737373;text-align:center">1hornstudio@gmail.com</a>
+    </div>
+  </div>
+</sc-if>
+
+<main id="main">
+
+<!-- HERO -->
+<section id="top" aria-labelledby="hero-title" style="padding-top:calc(64px + clamp(48px,9vw,128px))">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:12px;margin-bottom:clamp(28px,4vw,48px)">
+      <span style="display:inline-flex;align-items:center;gap:10px;height:32px;padding:0 14px;border:1px solid #E5E5E5;border-radius:999px;font-size:13px;font-weight:500"><span style="width:6px;height:6px;border-radius:50%;background:#0A0A0A"></span>Founded by IITians</span>
+      <span style="font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#737373">Design Studio — Product · UI/UX · Brand</span>
+    </div>
+    <h1 id="hero-title" style="margin:0;max-width:13.5em;font-size:clamp(44px,7.6vw,110px);line-height:0.98;font-weight:600;letter-spacing:-0.048em;text-wrap:balance">Make your business look like it means business.</h1>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:clamp(32px,4vw,56px)">
+      <p style="margin:0;max-width:560px;font-size:clamp(17px,1.4vw,20px);line-height:1.55;color:#0A0A0A;text-wrap:pretty">OneHorn is an IITian-founded design studio helping startups, local businesses and growing organisations build better brands, websites and digital experiences.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:12px">
+        <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Button" onClick="{{ talk }}" data-cursor="OPEN" style="height:52px;padding:0 24px;font-size:16px" hint-size="230px,52px">Talk to a design expert →</x-import>
+        <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Button" variant="ghost" onClick="{{ toServices }}" style="height:52px;padding:0 20px;font-size:16px" hint-size="210px,52px">Explore our services ↓</x-import>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hero visual: typographic grid -->
+  <div style="max-width:1360px;margin:clamp(56px,8vw,112px) auto 0;padding:0 clamp(20px,4vw,48px)">
+    <sc-if value="{{ heroType }}" hint-placeholder-val="{{ true }}">
+      <div aria-hidden="true" style="position:relative;border-top:1px solid #0A0A0A;border-bottom:1px solid #E5E5E5;background-image:repeating-linear-gradient(to right, #E5E5E5 0 1px, transparent 1px calc(100% / 12));background-size:100% 100%;overflow:hidden">
+        <div style="display:flex;justify-content:space-between;padding:10px 0;font:500 11px 'Geist Mono',monospace;letter-spacing:0.08em;color:#737373;background:#FFFFFF;border-bottom:1px solid #E5E5E5">
+          <span>FIG. 01 — STUDIO</span><span>12 COL / 1360</span>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:24px">
+          <div style="font-size:clamp(96px,23vw,330px);font-weight:600;letter-spacing:-0.065em;line-height:0.8;padding:0.06em 0 0.04em;margin-left:-0.04em">ONE</div>
+          <sc-if value="{{ showFragments }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:16px;align-items:flex-end;padding-right:clamp(0px,2vw,32px)">
+              <div style="width:250px;background:#FFFFFF;border:1px solid #E5E5E5;border-radius:8px;box-shadow:0 1px 2px rgba(10,10,10,0.05);padding:16px;display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;justify-content:space-between;font:500 10px 'Geist Mono',monospace;letter-spacing:0.08em;color:#737373"><span>UI / 03</span><span>FLOW</span></div>
+                <div style="font-size:15px;font-weight:600;letter-spacing:-0.01em">Reserve a table</div>
+                <div style="height:32px;border:1px solid #E5E5E5;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:12px;color:#737373">Saturday, 7:30 pm</div>
+                <div style="height:32px;border:1px solid #E5E5E5;border-radius:6px;display:flex;align-items:center;padding:0 10px;font-size:12px;color:#737373">2 guests</div>
+                <div style="height:34px;background:#0A0A0A;color:#FFFFFF;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:500">Continue →</div>
+              </div>
+              <div style="width:150px;display:flex;flex-direction:column;gap:6px">
+                <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:#E5E5E5;border:1px solid #E5E5E5">
+                  <div style="aspect-ratio:1;background:#0A0A0A"></div>
+                  <div style="aspect-ratio:1;background:#737373"></div>
+                  <div style="aspect-ratio:1;background:#E5E5E5"></div>
+                  <div style="aspect-ratio:1;background:#FFFFFF"></div>
+                </div>
+                <div style="font:500 10px 'Geist Mono',monospace;letter-spacing:0.06em;color:#737373;line-height:1.6">#0A0A0A · #737373<br>#E5E5E5 · #FFFFFF</div>
+              </div>
+            </div>
+          </sc-if>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;gap:24px;border-top:1px solid #E5E5E5">
+          <sc-if value="{{ showFragments }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex;gap:16px;align-items:stretch;padding-left:clamp(0px,1vw,16px)">
+              <div style="width:180px;background:#FFFFFF;border:1px solid #E5E5E5;border-radius:8px;overflow:hidden;display:flex;flex-direction:column">
+                <div style="position:relative;width:100%;aspect-ratio:840/530;overflow:hidden;background:#FFFFFF"><img src="assets/onehorn-logo.png" alt="" style="position:absolute;width:183%;left:-50%;top:-26%;mix-blend-mode:multiply"></div>
+                <div style="padding:8px 10px;border-top:1px solid #E5E5E5;font:500 10px 'Geist Mono',monospace;letter-spacing:0.08em;color:#737373">MARK / 1:1</div>
+              </div>
+              <div style="width:150px;background:#FFFFFF;border:1px solid #E5E5E5;border-radius:8px;padding:12px;display:flex;flex-direction:column;justify-content:space-between">
+                <div style="font-size:56px;font-weight:600;letter-spacing:-0.05em;line-height:1">Aa</div>
+                <div style="font:500 10px 'Geist Mono',monospace;letter-spacing:0.06em;color:#737373;line-height:1.6">GEIST 600<br>−4.8% TRACKING</div>
+              </div>
+            </div>
+          </sc-if>
+          <div style="font-size:clamp(96px,23vw,330px);font-weight:600;letter-spacing:-0.065em;line-height:0.8;padding:0.06em 0 0.04em;margin-left:auto;margin-right:-0.02em">HORN</div>
+        </div>
+      </div>
+    </sc-if>
+    <sc-if value="{{ heroLogo }}" hint-placeholder-val="{{ false }}">
+      <div style="border-top:1px solid #0A0A0A;border-bottom:1px solid #E5E5E5;background-image:repeating-linear-gradient(to right, #E5E5E5 0 1px, transparent 1px calc(100% / 12));display:flex;justify-content:center;padding:clamp(32px,6vw,80px) 0">
+        <img src="assets/onehorn-logo.png" alt="OneHorn Design Studio logo" style="width:min(640px,90%);mix-blend-mode:multiply">
+      </div>
+    </sc-if>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border-bottom:1px solid #E5E5E5">
+      <div style="padding:24px 24px 28px 0;display:flex;gap:16px">
+        <span style="font:500 12px 'Geist Mono',monospace;color:#737373;padding-top:4px">01</span>
+        <div><div style="font-size:17px;font-weight:600;letter-spacing:-0.01em">Design</div><div style="font-size:15px;color:#737373;margin-top:4px;line-height:1.5">We make things look considered.</div></div>
+      </div>
+      <div style="padding:24px 24px 28px 0;display:flex;gap:16px">
+        <span style="font:500 12px 'Geist Mono',monospace;color:#737373;padding-top:4px">02</span>
+        <div><div style="font-size:17px;font-weight:600;letter-spacing:-0.01em">Strategy</div><div style="font-size:15px;color:#737373;margin-top:4px;line-height:1.5">Every decision supports the business.</div></div>
+      </div>
+      <div style="padding:24px 24px 28px 0;display:flex;gap:16px">
+        <span style="font:500 12px 'Geist Mono',monospace;color:#737373;padding-top:4px">03</span>
+        <div><div style="font-size:17px;font-weight:600;letter-spacing:-0.01em">IIT-trained</div><div style="font-size:15px;color:#737373;margin-top:4px;line-height:1.5">Structured thinking, technical understanding.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST -->
+<section aria-labelledby="trust-title" style="padding:clamp(88px,12vw,176px) 0">
+  <div data-reveal="" style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,96px);align-items:flex-end;justify-content:space-between">
+    <div style="flex:1 1 560px;max-width:820px">
+      <h2 id="trust-title" style="margin:0;font-size:clamp(34px,4.6vw,64px);line-height:1.04;font-weight:600;letter-spacing:-0.04em;text-wrap:balance">Design should do more than look good.</h2>
+      <p style="margin:24px 0 0;font-size:clamp(18px,1.6vw,22px);line-height:1.5;color:#737373;max-width:560px;text-wrap:pretty">It should make your business clearer, more credible and easier to use.</p>
+    </div>
+    <div style="flex:0 1 340px;border-top:1px solid #0A0A0A;padding-top:20px">
+      <div style="font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;text-transform:uppercase">Founded by IITians</div>
+      <p style="margin:12px 0 0;font-size:16px;line-height:1.55;color:#737373">Combining design, engineering and systems thinking to solve real business problems.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MANIFESTO -->
+<section aria-labelledby="manifesto-title" style="background:#F5F5F5;padding:clamp(96px,14vw,200px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#737373;margin-bottom:clamp(32px,5vw,64px)">(01) Philosophy</div>
+    <h2 id="manifesto-title" data-reveal="" style="margin:0;font-size:clamp(46px,8.4vw,128px);line-height:0.96;font-weight:600;letter-spacing:-0.055em">
+      <span style="display:block">We don't decorate businesses.</span>
+      <span style="display:block;color:#737373">We clarify them.</span>
+    </h2>
+    <div style="display:flex;justify-content:flex-end;margin-top:clamp(48px,7vw,104px)">
+      <p data-reveal="" style="margin:0;max-width:520px;font-size:clamp(17px,1.4vw,20px);line-height:1.6;text-wrap:pretty">Whether you're launching a startup, opening a café, growing a local business or building a SaaS product, design should help people understand what you do and why it matters.</p>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" aria-labelledby="services-title" style="padding:clamp(88px,12vw,168px) 0;scroll-margin-top:64px">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between;align-items:flex-end;margin-bottom:clamp(40px,6vw,80px)">
+      <div>
+        <div style="font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#737373;margin-bottom:20px">(02) Services</div>
+        <h2 id="services-title" style="margin:0;font-size:clamp(40px,6vw,88px);line-height:1;font-weight:600;letter-spacing:-0.05em">What we design.</h2>
+      </div>
+      <p style="margin:0;max-width:420px;font-size:18px;line-height:1.55;color:#737373;text-wrap:pretty">From the first idea to the final interface, we bring strategy and execution together.</p>
+    </div>
+    <div onMouseLeave="{{ svcLeave }}" style="border-bottom:1px solid #0A0A0A">
+      <sc-for list="{{ services }}" as="item" hint-placeholder-count="3">
+        <article onMouseEnter="{{ item.enter }}" style="border-top:1px solid #0A0A0A;padding:clamp(28px,3.5vw,44px) 0">
+          <div style="display:flex;flex-wrap:wrap;gap:20px clamp(24px,4vw,64px);align-items:flex-start">
+            <div style="flex:0 0 72px;font:500 14px 'Geist Mono',monospace;color:#737373;padding-top:10px">{{ item.num }}</div>
+            <div style="flex:1 1 380px">
+              <h3 style="margin:0;font-size:clamp(32px,4.4vw,60px);line-height:1;font-weight:600;letter-spacing:-0.045em">{{ item.title }}</h3>
+              <div style="margin-top:12px;font-size:16px;color:#737373">{{ item.sub }}</div>
+            </div>
+            <div style="flex:1 1 320px;max-width:460px;display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+              <p style="margin:0;font-size:18px;line-height:1.55;text-wrap:pretty">{{ item.desc }}</p>
+              <button type="button" onClick="{{ item.toggle }}" onFocus="{{ item.enter }}" aria-expanded="{{ item.expanded }}" aria-controls="svc-{{ item.num }}" style="display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0;background:none;border:0;border-bottom:1px solid #0A0A0A;font:500 15px 'Geist',sans-serif;color:#0A0A0A;cursor:pointer">{{ item.cta }}</button>
+            </div>
+          </div>
+          <div id="svc-{{ item.num }}" style="display:grid;grid-template-rows:{{ item.rows }};opacity:{{ item.op }};transition:grid-template-rows 350ms cubic-bezier(.2,.7,.2,1), opacity 300ms">
+            <div style="overflow:hidden">
+              <div style="display:flex;flex-wrap:wrap;gap:24px clamp(24px,4vw,64px);padding-top:32px">
+                <div style="flex:0 0 72px"></div>
+                <ul style="flex:1 1 600px;margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:0 32px">
+                  <sc-for list="{{ item.caps }}" as="cap" hint-placeholder-count="6">
+                    <li style="display:flex;gap:12px;padding:12px 0;border-top:1px solid #E5E5E5;font-size:16px"><span style="color:#737373">→</span>{{ cap }}</li>
+                  </sc-for>
+                </ul>
+                <div style="flex:0 1 240px;display:flex;align-items:flex-end">
+                  <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Button" variant="outline" onClick="{{ item.discuss }}" data-cursor="OPEN" style="height:44px;padding:0 16px;font-size:14px" hint-size="220px,44px">{{ item.discussLabel }}</x-import>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- WHO WE HELP -->
+<section aria-labelledby="audience-title" style="padding:0 0 clamp(88px,12vw,168px)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:24px 48px;margin-bottom:clamp(40px,6vw,72px)">
+      <div style="flex:0 0 220px;font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#737373;padding-top:14px">(03) Who we help</div>
+      <h2 id="audience-title" style="flex:1 1 600px;margin:0;font-size:clamp(36px,5vw,72px);line-height:1.02;font-weight:600;letter-spacing:-0.045em;text-wrap:balance">Built for businesses with something to build.</h2>
+    </div>
+    <ol style="margin:0;padding:0;list-style:none;border-bottom:1px solid #E5E5E5">
+      <sc-for list="{{ audiences }}" as="a" hint-placeholder-count="6">
+        <li data-reveal="" style="display:flex;flex-wrap:wrap;align-items:baseline;gap:8px clamp(24px,4vw,48px);padding:clamp(20px,2.4vw,28px) 0;border-top:1px solid #E5E5E5">
+          <span style="flex:0 0 220px;font:500 13px 'Geist Mono',monospace;color:#737373">{{ a.num }}</span>
+          <span style="flex:1 1 380px;font-size:clamp(26px,3vw,40px);font-weight:600;letter-spacing:-0.035em;line-height:1.1">{{ a.name }}</span>
+          <span style="flex:1 1 320px;font-size:17px;line-height:1.5;color:#737373">{{ a.line }}</span>
+        </li>
+      </sc-for>
+    </ol>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section aria-labelledby="process-title" style="background:#F5F5F5;padding:clamp(88px,12vw,168px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:24px 48px;margin-bottom:clamp(48px,7vw,96px)">
+      <div style="flex:0 0 220px;font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#737373;padding-top:14px">(04) How we work</div>
+      <h2 id="process-title" style="flex:1 1 600px;margin:0;font-size:clamp(40px,6vw,88px);line-height:1;font-weight:600;letter-spacing:-0.05em">From idea to clarity.</h2>
+    </div>
+    <sc-if value="{{ isDesktop }}" hint-placeholder-val="{{ true }}">
+      <ol style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:relative">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <li data-reveal="" style="position:relative;border-top:1px solid #0A0A0A;padding:32px 32px 0 0">
+            <span style="position:absolute;top:-5px;left:0;width:9px;height:9px;border-radius:50%;background:#0A0A0A"></span>
+            <div style="font:500 13px 'Geist Mono',monospace;color:#737373">{{ s.num }}</div>
+            <h3 style="margin:20px 0 12px;font-size:32px;font-weight:600;letter-spacing:-0.035em">{{ s.name }}</h3>
+            <p style="margin:0;font-size:17px;line-height:1.55;color:#737373;max-width:260px">{{ s.line }}</p>
+          </li>
+        </sc-for>
+      </ol>
+    </sc-if>
+    <sc-if value="{{ isMobile }}" hint-placeholder-val="{{ false }}">
+      <ol style="margin:0;padding:0 0 0 24px;list-style:none;border-left:1px solid #0A0A0A;display:flex;flex-direction:column;gap:40px">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <li style="position:relative">
+            <span style="position:absolute;top:6px;left:-29px;width:9px;height:9px;border-radius:50%;background:#0A0A0A"></span>
+            <div style="font:500 13px 'Geist Mono',monospace;color:#737373">{{ s.num }}</div>
+            <h3 style="margin:8px 0 8px;font-size:28px;font-weight:600;letter-spacing:-0.035em">{{ s.name }}</h3>
+            <p style="margin:0;font-size:17px;line-height:1.55;color:#737373">{{ s.line }}</p>
+          </li>
+        </sc-for>
+      </ol>
+    </sc-if>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" aria-labelledby="work-title" style="padding:clamp(88px,12vw,168px) 0;scroll-margin-top:64px">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:24px 48px;justify-content:space-between;align-items:flex-end;margin-bottom:clamp(40px,6vw,80px)">
+      <div>
+        <div style="font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#737373;margin-bottom:20px">(05) Work</div>
+        <h2 id="work-title" style="margin:0;font-size:clamp(40px,6vw,88px);line-height:1;font-weight:600;letter-spacing:-0.05em">Selected work.</h2>
+      </div>
+      <p style="margin:0;max-width:420px;font-size:18px;line-height:1.55;color:#737373">A few things we've had the opportunity to design.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:clamp(48px,5vw,72px) clamp(24px,3vw,40px)">
+      <sc-for list="{{ projects }}" as="p" hint-placeholder-count="3">
+        <article data-reveal="" style="grid-column:{{ p.span }};display:flex;flex-direction:column;gap:20px">
+          <div data-cursor="VIEW" style="position:relative;aspect-ratio:{{ p.ratio }};background:#F5F5F5;border-radius:4px;overflow:hidden">
+            <image-slot id="project-{{ p.num }}" shape="rect" placeholder="{{ p.placeholder }}"></image-slot>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;border-top:1px solid #0A0A0A;padding-top:16px">
+            <div style="display:flex;flex-direction:column;gap:6px;flex:1 1 280px">
+              <div style="display:flex;gap:12px;align-items:baseline">
+                <h3 style="margin:0;font-size:clamp(24px,2.4vw,32px);font-weight:600;letter-spacing:-0.035em">{{ p.name }}</h3>
+                <span style="font:500 11px 'Geist Mono',monospace;letter-spacing:0.08em;color:#737373;border:1px dashed #737373;padding:2px 6px;border-radius:4px">PLACEHOLDER</span>
+              </div>
+              <div style="font-size:16px;color:#737373">{{ p.category }} · {{ p.year }}</div>
+              <p style="margin:6px 0 0;font-size:16px;line-height:1.55;max-width:520px">{{ p.description }}</p>
+            </div>
+            <div style="display:flex;flex-direction:column;align-items:flex-end;justify-content:space-between;gap:16px">
+              <div style="display:flex;flex-wrap:wrap;gap:6px;justify-content:flex-end">
+                <sc-for list="{{ p.tags }}" as="t" hint-placeholder-count="2">
+                  <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Badge" variant="outline" hint-size="60px,22px">{{ t }}</x-import>
+                </sc-for>
+              </div>
+              <span aria-disabled="true" style="font-size:15px;font-weight:500;color:#737373">Case study coming soon</span>
+            </div>
+          </div>
+        </article>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section aria-labelledby="why-title" style="padding:0 0 clamp(88px,12vw,168px)">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div data-reveal="" style="display:flex;flex-wrap:wrap;gap:24px 48px;margin-bottom:clamp(48px,6vw,80px)">
+      <div style="flex:0 0 220px;font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#737373;padding-top:14px">(06) Why OneHorn</div>
+      <h2 id="why-title" style="flex:1 1 600px;margin:0;font-size:clamp(36px,5vw,72px);line-height:1.02;font-weight:600;letter-spacing:-0.045em">
+        <span style="display:block">Small studio.</span>
+        <span style="display:block;color:#737373">Serious design thinking.</span>
+      </h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px 32px">
+      <sc-for list="{{ principles }}" as="pr" hint-placeholder-count="4">
+        <div data-reveal="" style="border-top:1px solid #0A0A0A;padding-top:20px">
+          <div style="font:500 13px 'Geist Mono',monospace;color:#737373">{{ pr.num }}</div>
+          <h3 style="margin:28px 0 10px;font-size:22px;font-weight:600;letter-spacing:-0.02em">{{ pr.name }}</h3>
+          <p style="margin:0;font-size:17px;line-height:1.55;color:#737373;text-wrap:pretty">{{ pr.line }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" aria-labelledby="about-title" style="border-top:1px solid #E5E5E5;padding:clamp(88px,12vw,168px) 0;scroll-margin-top:64px">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px);display:flex;flex-wrap:wrap;gap:clamp(48px,6vw,96px)">
+    <div data-reveal="" style="flex:1 1 440px;display:flex;flex-direction:column;justify-content:space-between;gap:40px">
+      <div>
+        <div style="font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#737373;margin-bottom:20px">(07) About</div>
+        <h2 id="about-title" style="margin:0;font-size:clamp(36px,4.6vw,64px);line-height:1.04;font-weight:600;letter-spacing:-0.045em">
+          <span style="display:block">Two designers.</span>
+          <span style="display:block">One studio.</span>
+          <span style="display:block;color:#737373">A lot of curiosity.</span>
+        </h2>
+      </div>
+      <p style="margin:0;max-width:480px;font-size:clamp(17px,1.4vw,20px);line-height:1.6;text-wrap:pretty">OneHorn was started by two IITians who believe good design sits at the intersection of business, technology and human behaviour.</p>
+    </div>
+    <div style="flex:1 1 520px;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px">
+      <sc-for list="{{ team }}" as="m" hint-placeholder-count="2">
+        <figure data-reveal="" style="margin:0;display:flex;flex-direction:column;gap:16px">
+          <div style="aspect-ratio:4/5;background:#F5F5F5;border-radius:4px;overflow:hidden">
+            <image-slot id="founder-{{ m.id }}" shape="rect" placeholder="{{ m.photoLabel }}"></image-slot>
+          </div>
+          <figcaption style="border-top:1px solid #0A0A0A;padding-top:14px">
+            <div style="font-size:20px;font-weight:600;letter-spacing:-0.02em">{{ m.name }}</div>
+            <div style="font-size:15px;color:#737373;margin-top:4px">{{ m.role }}</div>
+          </figcaption>
+        </figure>
+      </sc-for>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section aria-labelledby="kind-title" style="background:#F5F5F5;padding:clamp(88px,12vw,168px) 0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="display:flex;flex-wrap:wrap;gap:24px 48px;margin-bottom:clamp(40px,6vw,72px)">
+      <div style="flex:0 0 220px;font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#737373;padding-top:14px">(08) Testimonials</div>
+      <h2 id="kind-title" style="flex:1 1 600px;margin:0;font-size:clamp(40px,6vw,88px);line-height:1;font-weight:600;letter-spacing:-0.05em">Kind words.</h2>
+    </div>
+    <sc-for list="{{ testimonials }}" as="q" hint-placeholder-count="1">
+      <figure data-reveal="" style="margin:0;display:flex;flex-wrap:wrap;gap:24px 48px;padding-top:clamp(32px,4vw,48px);border-top:1px solid #0A0A0A">
+        <div style="flex:0 0 220px">
+          <span style="font:500 11px 'Geist Mono',monospace;letter-spacing:0.08em;color:#737373;border:1px dashed #737373;padding:2px 6px;border-radius:4px">PLACEHOLDER</span>
+        </div>
+        <div style="flex:1 1 600px">
+          <blockquote style="margin:0;font-size:clamp(26px,3.6vw,52px);line-height:1.15;font-weight:500;letter-spacing:-0.035em;text-wrap:pretty">“{{ q.quote }}”</blockquote>
+          <figcaption style="margin-top:40px;display:flex;flex-direction:column;gap:4px">
+            <span style="font:500 13px 'Geist Mono',monospace;letter-spacing:0.08em">{{ q.name }}</span>
+            <span style="font:500 13px 'Geist Mono',monospace;letter-spacing:0.08em;color:#737373">{{ q.role }}</span>
+          </figcaption>
+        </div>
+      </figure>
+    </sc-for>
+  </div>
+</section>
+
+<!-- CONTACT CTA + FORM -->
+<section id="contact" aria-labelledby="contact-title" style="background:#0A0A0A;color:#FFFFFF;padding:clamp(96px,14vw,200px) 0 clamp(72px,9vw,128px);scroll-margin-top:0">
+  <div style="max-width:1360px;margin:0 auto;padding:0 clamp(20px,4vw,48px)">
+    <div style="font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;text-transform:uppercase;color:#A3A3A3;margin-bottom:clamp(28px,4vw,48px)">(09) Contact</div>
+    <h2 id="contact-title" data-reveal="" style="margin:0;max-width:12em;font-size:clamp(46px,8vw,120px);line-height:0.96;font-weight:600;letter-spacing:-0.055em;color:#FFFFFF;text-wrap:balance">Have something worth designing?</h2>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:32px;margin-top:clamp(40px,5vw,64px)">
+      <p style="margin:0;max-width:560px;font-size:clamp(17px,1.4vw,20px);line-height:1.6;color:#D4D4D4;text-wrap:pretty">Tell us what you're building, what isn't working, or where you want to take your business. We'll help you understand where design can make a difference.</p>
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:20px 28px">
+        <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Button" variant="secondary" onClick="{{ talk }}" data-cursor="OPEN" style="height:56px;padding:0 28px;font-size:16px;background:#FFFFFF;color:#0A0A0A" hint-size="240px,56px">Talk to a design expert →</x-import>
+        <a href="mailto:1hornstudio@gmail.com" style="font-size:17px;color:#FFFFFF;border-bottom:1px solid #737373;padding-bottom:2px">1hornstudio@gmail.com</a>
+      </div>
+    </div>
+
+    <div id="contact-form" style="margin-top:clamp(88px,11vw,152px);background:#FFFFFF;color:#0A0A0A;border-radius:8px;padding:clamp(28px,5vw,64px);display:flex;flex-wrap:wrap;gap:clamp(40px,6vw,96px);scroll-margin-top:80px">
+      <div style="flex:1 1 280px;max-width:380px;display:flex;flex-direction:column;justify-content:space-between;gap:32px">
+        <div>
+          <h3 style="margin:0;font-size:clamp(30px,3.4vw,44px);line-height:1.05;font-weight:600;letter-spacing:-0.04em">Start a conversation.</h3>
+          <p style="margin:16px 0 0;font-size:17px;line-height:1.55;color:#737373">A few details are enough. You'll hear back from one of the founders.</p>
+        </div>
+        <div style="font-size:15px;color:#737373">Prefer email? <a href="mailto:1hornstudio@gmail.com" style="color:#0A0A0A;text-decoration:underline;text-underline-offset:4px">1hornstudio@gmail.com</a></div>
+      </div>
+
+      <div style="flex:2 1 480px">
+        <sc-if value="{{ showForm }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ submit }}" aria-labelledby="contact-form-title" style="display:flex;flex-direction:column;gap:28px">
+            <span id="contact-form-title" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Contact form</span>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px 24px">
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Label" htmlFor="f-name" style="font-size:14px" hint-size="80px,18px">Your name</x-import>
+                <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Input" id="f-name" name="name" value="{{ form.name }}" onChange="{{ setName }}" aria-invalid="{{ err.name.invalid }}" aria-describedby="f-name-err" aria-required="true" style="height:48px;font-size:16px" hint-size="100%,48px"></x-import>
+                <sc-if value="{{ err.name.has }}" hint-placeholder-val="{{ false }}"><span id="f-name-err" role="alert" style="font-size:14px;color:var(--destructive)">{{ err.name.msg }}</span></sc-if>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:8px">
+                <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Label" htmlFor="f-company" style="font-size:14px" hint-size="140px,18px">Business / Company <span style="color:#737373;font-weight:400">(optional)</span></x-import>
+                <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Input" id="f-company" name="company" value="{{ form.company }}" onChange="{{ setCompany }}" style="height:48px;font-size:16px" hint-size="100%,48px"></x-import>
+              </div>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Label" htmlFor="f-email" style="font-size:14px" hint-size="60px,18px">Email</x-import>
+              <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Input" id="f-email" name="email" type="text" value="{{ form.email }}" onChange="{{ setEmail }}" aria-invalid="{{ err.email.invalid }}" aria-describedby="f-email-err" aria-required="true" placeholder="you@business.com" style="height:48px;font-size:16px" hint-size="100%,48px"></x-import>
+              <sc-if value="{{ err.email.has }}" hint-placeholder-val="{{ false }}"><span id="f-email-err" role="alert" style="font-size:14px;color:var(--destructive)">{{ err.email.msg }}</span></sc-if>
+            </div>
+            <fieldset aria-describedby="f-help-err" style="margin:0;padding:0;border:0;display:flex;flex-direction:column;gap:12px">
+              <legend style="padding:0;margin-bottom:12px;font-size:14px;font-weight:500">What can we help with? <span style="color:#737373;font-weight:400">Choose any</span></legend>
+              <div style="display:flex;flex-wrap:wrap;gap:8px">
+                <sc-for list="{{ helpOptions }}" as="h" hint-placeholder-count="5">
+                  <button type="button" id="{{ h.id }}" onClick="{{ h.toggle }}" aria-pressed="{{ h.pressed }}" style="height:44px;padding:0 18px;border-radius:999px;border:1px solid {{ h.border }};background:{{ h.bg }};color:{{ h.fg }};font:500 15px 'Geist',sans-serif;cursor:pointer;transition:background 150ms,color 150ms,border-color 150ms">{{ h.label }}</button>
+                </sc-for>
+              </div>
+              <sc-if value="{{ err.help.has }}" hint-placeholder-val="{{ false }}"><span id="f-help-err" role="alert" style="font-size:14px;color:var(--destructive)">{{ err.help.msg }}</span></sc-if>
+            </fieldset>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Label" htmlFor="f-about" style="font-size:14px" hint-size="220px,18px">Tell us a little about your project</x-import>
+              <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Textarea" id="f-about" name="about" value="{{ form.about }}" onChange="{{ setAbout }}" aria-invalid="{{ err.about.invalid }}" aria-describedby="f-about-err" aria-required="true" rows="6" placeholder="What are you building, and what would you like to change?" style="min-height:160px;font-size:16px;padding:12px" hint-size="100%,160px"></x-import>
+              <sc-if value="{{ err.about.has }}" hint-placeholder-val="{{ false }}"><span id="f-about-err" role="alert" style="font-size:14px;color:var(--destructive)">{{ err.about.msg }}</span></sc-if>
+            </div>
+            <div style="display:flex;flex-direction:column;gap:8px">
+              <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Label" htmlFor="f-source" style="font-size:14px" hint-size="220px,18px">Where did you hear about us? <span style="color:#737373;font-weight:400">(optional)</span></x-import>
+              <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Input" id="f-source" name="source" value="{{ form.source }}" onChange="{{ setSource }}" style="height:48px;font-size:16px" hint-size="100%,48px"></x-import>
+            </div>
+            <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px;border-top:1px solid #E5E5E5;padding-top:24px">
+              <span style="font-size:14px;color:#737373">We don't share your details.</span>
+              <x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Button" type="submit" disabled="{{ sending }}" data-cursor="OPEN" style="height:52px;padding:0 24px;font-size:16px" hint-size="230px,52px">{{ submitLabel }}</x-import>
+            </div>
+          </form>
+        </sc-if>
+        <sc-if value="{{ submitted }}" hint-placeholder-val="{{ false }}">
+          <div role="status" style="min-height:360px;display:flex;flex-direction:column;justify-content:center;gap:16px;border-top:1px solid #0A0A0A;padding-top:32px">
+            <div style="font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;color:#737373">MESSAGE SENT</div>
+            <h3 id="f-thanks" tabindex="-1" style="margin:0;font-size:clamp(30px,3.4vw,44px);line-height:1.05;font-weight:600;letter-spacing:-0.04em;outline:none">Thank you, {{ firstName }}.</h3>
+            <p style="margin:0;font-size:17px;line-height:1.55;color:#737373;max-width:460px">We'll reply to {{ form.email }}.</p>
+            <div><x-import component-from-global-scope="ShadcnUiDesignSystem_78dd73.Button" variant="outline" onClick="{{ reset }}" style="height:44px;margin-top:8px" hint-size="180px,44px">Send another message</x-import></div>
+          </div>
+        </sc-if>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- FOOTER -->
+<footer style="background:#0A0A0A;color:#FFFFFF;border-top:1px solid #262626">
+  <div style="max-width:1360px;margin:0 auto;padding:clamp(56px,7vw,96px) clamp(20px,4vw,48px) 32px">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:40px;margin-bottom:clamp(56px,8vw,112px)">
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;color:#A3A3A3">NAVIGATE</span>
+        <a href="#work" style="color:#FFFFFF;font-size:16px">Work</a>
+        <a href="#services" style="color:#FFFFFF;font-size:16px">Services</a>
+        <a href="#about" style="color:#FFFFFF;font-size:16px">About</a>
+        <a href="#contact" style="color:#FFFFFF;font-size:16px">Contact</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;color:#A3A3A3">CONTACT</span>
+        <a href="mailto:1hornstudio@gmail.com" style="color:#FFFFFF;font-size:16px">1hornstudio@gmail.com</a>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:12px">
+        <span style="font:500 12px 'Geist Mono',monospace;letter-spacing:0.08em;color:#A3A3A3">SOCIAL</span>
+        <a href="#" style="color:#FFFFFF;font-size:16px">Instagram</a>
+        <a href="#" style="color:#FFFFFF;font-size:16px">LinkedIn</a>
+      </div>
+    </div>
+    <div aria-hidden="true" style="font-size:clamp(64px,19.4vw,290px);font-weight:700;letter-spacing:-0.06em;line-height:0.78;margin-left:-0.04em;color:#FFFFFF">ONEHORN</div>
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:28px;padding-top:20px;border-top:1px solid #262626;font-size:14px;color:#A3A3A3">
+      <span>Design Studio</span>
+      <span>© 2026 OneHorn Design Studio</span>
+      <span>Product · UI/UX · Brand</span>
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;heroVariant&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Typographic grid&quot;,&quot;Logo mark&quot;],&quot;default&quot;:&quot;Typographic grid&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;customCursor&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;scrollReveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+const SERVICES = [
+  { num: '01', title: 'Product Design', sub: 'Digital products, SaaS & applications', desc: 'From early concepts to production-ready experiences, we design digital products that are useful, structured and easy to understand.', cta: 'Explore Product Design →', key: 'Product Design', discussLabel: 'Discuss a product project →',
+    caps: ['Product strategy', 'UX research', 'User flows', 'Information architecture', 'Wireframing', 'UI design', 'Prototyping', 'SaaS design', 'Web applications', 'Mobile applications', 'Design systems'] },
+  { num: '02', title: 'UI/UX Design', sub: 'Research, UX strategy & interface design', desc: 'We turn complex journeys into simple, intuitive and accessible experiences.', cta: 'Explore UI/UX →', key: 'UI/UX', discussLabel: 'Discuss a UI/UX project →',
+    caps: ['UX research', 'UX strategy', 'User journeys', 'Information architecture', 'Interaction design', 'Interface design', 'Usability testing', 'Responsive design', 'Design systems'] },
+  { num: '03', title: 'Brand & Visual Design', sub: 'Identity, websites & visual communication', desc: 'We create visual identities and websites that make businesses feel credible, distinctive and ready to grow.', cta: 'Explore Brand Design →', key: 'Brand', discussLabel: 'Discuss a brand or website →',
+    caps: ['Brand strategy', 'Brand identity', 'Logo systems', 'Visual direction', 'Website design', 'Landing pages', 'Marketing websites', 'Social media design', 'Presentation design', 'Brand guidelines'] }
+];
+const AUDIENCES = [
+  { num: '01', name: 'Startups', line: 'Turn an idea into a product people understand.' },
+  { num: '02', name: 'Local businesses', line: 'Build a digital presence that feels as good as your business.' },
+  { num: '03', name: 'Incubation centres', line: 'Help emerging businesses build stronger products and brands.' },
+  { num: '04', name: 'Cafés & restaurants', line: 'Turn a physical experience into a memorable brand.' },
+  { num: '05', name: 'Gyms & wellness businesses', line: 'Build a brand that communicates energy and trust.' },
+  { num: '06', name: 'Schools & education', line: 'Make information easier to understand and access.' }
+];
+const STEPS = [
+  { num: '01', name: 'Understand', line: 'Business, users, goals and constraints.' },
+  { num: '02', name: 'Define', line: 'Problems, opportunities and design direction.' },
+  { num: '03', name: 'Design', line: 'Structure, interaction, interface and visual system.' },
+  { num: '04', name: 'Refine', line: 'Testing, iteration and final polish.' }
+];
+// Replace with real projects. image: drop into the slot, or set later.
+const PROJECTS = [
+  { num: '01', name: 'Project 01', category: 'Product Design', year: 'Year', description: 'Short project description to be added.', tags: ['Tag', 'Tag'], href: null, featured: true },
+  { num: '02', name: 'Project 02', category: 'Brand + Website', year: 'Year', description: 'Short project description to be added.', tags: ['Tag', 'Tag'], href: null },
+  { num: '03', name: 'Project 03', category: 'SaaS / UX', year: 'Year', description: 'Short project description to be added.', tags: ['Tag', 'Tag'], href: null }
+];
+const PRINCIPLES = [
+  { num: '01', name: 'IIT-trained thinking', line: 'Engineering, systems thinking and human-centred design.' },
+  { num: '02', name: 'Business first', line: 'We understand that design has to support a real business objective.' },
+  { num: '03', name: 'Senior attention', line: 'The people doing the work are directly involved in the thinking and design.' },
+  { num: '04', name: 'Detail matters', line: 'From strategy to spacing, every decision should have a reason.' }
+];
+const TEAM = [
+  { id: 'sumit', name: 'Sumit Baranwal', role: 'Co-founder · M.Des, IIT Guwahati', photoLabel: 'Photo — Sumit Baranwal' },
+  { id: 'pratik', name: 'Pratik Dusane', role: 'Co-founder · M.Des, IIT Guwahati', photoLabel: 'Photo — Pratik Dusane' }
+];
+const TESTIMONIALS = [
+  { quote: 'Client testimonial goes here. A short, specific sentence or two about working with OneHorn.', name: 'NAME', role: 'ROLE / BUSINESS', placeholder: true }
+];
+const HELP = ['Brand', 'Website', 'UI/UX', 'Product Design', 'Other'];
+const EMPTY = { name: '', company: '', email: '', help: [], about: '', source: '' };
+
+class Component extends DCLogic {
+  state = { scrolled: false, w: typeof window !== 'undefined' ? window.innerWidth : 1440, menu: false, openSvc: null, form: { ...EMPTY }, errors: {}, tried: false, sending: false, submitted: false };
+
+  componentDidMount() {
+    this.onScroll = () => { const s = window.scrollY > 8; if (s !== this.state.scrolled) this.setState({ scrolled: s }); };
+    this.onResize = () => { const w = window.innerWidth; if (w !== this.state.w) this.setState({ w, menu: w < 860 ? this.state.menu : false }); };
+    this.onKey = (e) => { if (e.key === 'Escape' && this.state.menu) this.setMenu(false); };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    window.addEventListener('resize', this.onResize);
+    window.addEventListener('keydown', this.onKey);
+    this.onScroll();
+    this.reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    this.fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (!this.reduced && (this.props.scrollReveal ?? true)) setTimeout(() => this.setupReveal(), 50);
+    if (!this.reduced && this.fine && (this.props.customCursor ?? true)) this.setupCursor();
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('resize', this.onResize);
+    window.removeEventListener('keydown', this.onKey);
+    if (this.onMove) window.removeEventListener('mousemove', this.onMove);
+    if (this.io) this.io.disconnect();
+    if (this.cursor) this.cursor.remove();
+    document.body.style.overflow = '';
+  }
+  setupReveal() {
+    const ease = 'cubic-bezier(.2,.7,.2,1)';
+    this.io = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (!e.isIntersecting) return;
+      e.target.style.opacity = '1'; e.target.style.transform = 'none';
+      this.io.unobserve(e.target);
+    }), { rootMargin: '0px 0px -6% 0px' });
+    document.querySelectorAll('[data-reveal]').forEach((el) => {
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.style.opacity = '0'; el.style.transform = 'translateY(20px)';
+      el.style.transition = `opacity 500ms ${ease}, transform 500ms ${ease}`;
+      this.io.observe(el);
+    });
+  }
+  setupCursor() {
+    const c = document.createElement('div');
+    c.setAttribute('aria-hidden', 'true');
+    Object.assign(c.style, { position: 'fixed', left: '0', top: '0', width: '72px', height: '72px', margin: '-36px 0 0 -36px', borderRadius: '50%', background: '#0A0A0A', color: '#FFFFFF', display: 'flex', alignItems: 'center', justifyContent: 'center', font: '500 11px/1 "Geist Mono", monospace', letterSpacing: '0.1em', pointerEvents: 'none', zIndex: '9999', transform: 'scale(0)', transition: 'transform 200ms cubic-bezier(.2,.7,.2,1)', boxShadow: '0 0 0 1px rgba(255,255,255,0.25)' });
+    document.body.appendChild(c);
+    this.cursor = c;
+    this.onMove = (e) => {
+      c.style.left = e.clientX + 'px'; c.style.top = e.clientY + 'px';
+      const t = e.target && e.target.closest ? e.target.closest('[data-cursor]') : null;
+      if (t) { c.textContent = t.getAttribute('data-cursor'); c.style.transform = 'scale(1)'; } else c.style.transform = 'scale(0)';
+    };
+    window.addEventListener('mousemove', this.onMove, { passive: true });
+  }
+  setMenu(open) { document.body.style.overflow = open ? 'hidden' : ''; this.setState({ menu: open }); }
+  scrollToId(id, offset = 64) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - offset, behavior: this.reduced ? 'auto' : 'smooth' });
+  }
+  goContact(help) {
+    this.setMenu(false);
+    if (help) this.setState((s) => (s.form.help.includes(help) ? null : { form: { ...s.form, help: [...s.form.help, help] } }));
+    this.scrollToId('contact-form', 80);
+    setTimeout(() => { const f = document.getElementById('f-name'); if (f) f.focus({ preventScroll: true }); }, this.reduced ? 0 : 700);
+  }
+  validate(f) {
+    const e = {};
+    if (!f.name.trim()) e.name = 'Please enter your name.';
+    const em = f.email.trim();
+    if (!em) e.email = 'Please enter your email address.';
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)) e.email = 'That email address doesn\u2019t look right. Check for typos.';
+    if (!f.help.length) e.help = 'Choose at least one option.';
+    if (f.about.trim().length < 10) e.about = 'Tell us a little about your project. A sentence or two is enough.';
+    return e;
+  }
+  setField(k, v) { this.setState((s) => { const form = { ...s.form, [k]: v }; return { form, errors: s.tried ? this.validate(form) : s.errors }; }); }
+  submit = (ev) => {
+    ev.preventDefault();
+    const errors = this.validate(this.state.form);
+    this.setState({ errors, tried: true });
+    const ids = { name: 'f-name', email: 'f-email', help: 'f-help-0', about: 'f-about' };
+    const first = ['name', 'email', 'help', 'about'].find((k) => errors[k]);
+    if (first) { setTimeout(() => { const el = document.getElementById(ids[first]); if (el) el.focus(); }, 0); return; }
+    this.setState({ sending: true });
+    // TODO: connect to a form endpoint (e.g. Formspree / API route).
+    setTimeout(() => { this.setState({ sending: false, submitted: true }); setTimeout(() => { const h = document.getElementById('f-thanks'); if (h) h.focus(); }, 50); }, 700);
+  };
+
+  renderVals() {
+    const { w, scrolled, menu, openSvc, form, errors, sending, submitted } = this.state;
+    const isMobile = w < 860;
+    const heroVariant = this.props.heroVariant ?? 'Typographic grid';
+    const err = {};
+    ['name', 'email', 'help', 'about'].forEach((k) => { err[k] = { has: !!errors[k], msg: errors[k] || '', invalid: errors[k] ? 'true' : 'false' }; });
+    return {
+      isMobile, isDesktop: !isMobile, showFragments: w >= 1100,
+      heroType: heroVariant !== 'Logo mark', heroLogo: heroVariant === 'Logo mark',
+      navBg: scrolled ? 'rgba(255,255,255,0.86)' : 'rgba(255,255,255,0)',
+      navBorder: scrolled ? '#E5E5E5' : 'transparent',
+      navBlur: scrolled ? 'saturate(180%) blur(12px)' : 'none',
+      menuOpen: menu && isMobile, menuExpanded: String(menu),
+      openMenu: () => this.setMenu(true), closeMenu: () => this.setMenu(false),
+      talk: () => this.goContact(),
+      toServices: () => this.scrollToId('services'),
+      svcLeave: () => { if (this.fine) this.setState({ openSvc: null }); },
+      services: SERVICES.map((s, i) => {
+        const open = openSvc === i;
+        return { ...s, open, expanded: String(open), rows: open ? '1fr' : '0fr', op: open ? 1 : 0,
+          enter: () => { if (this.fine && openSvc !== i) this.setState({ openSvc: i }); },
+          toggle: () => this.setState((st) => ({ openSvc: this.fine ? i : (st.openSvc === i ? null : i) })),
+          discuss: () => this.goContact(s.key) };
+      }),
+      audiences: AUDIENCES, steps: STEPS, principles: PRINCIPLES, team: TEAM, testimonials: TESTIMONIALS,
+      projects: PROJECTS.map((p) => ({ ...p, span: p.featured ? '1 / -1' : 'auto', ratio: p.featured ? '16 / 8' : '4 / 3', placeholder: `${p.name} — visual` })),
+      form, err, sending, submitted, showForm: !submitted,
+      submitLabel: sending ? 'Sending…' : 'Start a conversation →',
+      firstName: (form.name.trim().split(/\s+/)[0]) || 'there',
+      setName: (e) => this.setField('name', e.target.value),
+      setCompany: (e) => this.setField('company', e.target.value),
+      setEmail: (e) => this.setField('email', e.target.value),
+      setAbout: (e) => this.setField('about', e.target.value),
+      setSource: (e) => this.setField('source', e.target.value),
+      helpOptions: HELP.map((label, i) => {
+        const on = form.help.includes(label);
+        return { label, id: `f-help-${i}`, pressed: String(on), bg: on ? '#0A0A0A' : '#FFFFFF', fg: on ? '#FFFFFF' : '#0A0A0A', border: on ? '#0A0A0A' : (errors.help ? 'var(--destructive)' : '#E5E5E5'),
+          toggle: () => this.setField('help', on ? form.help.filter((x) => x !== label) : [...form.help, label]) };
+      }),
+      submit: this.submit,
+      reset: () => this.setState({ form: { ...EMPTY }, errors: {}, tried: false, submitted: false })
+    };
+  }
+}
+</script>
+</body>
+</html>
